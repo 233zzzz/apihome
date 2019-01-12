@@ -144,7 +144,7 @@ def queryholderss2(names,depth):
 
 nodes3 = []  #股东节点
 #links3 = []
-aaa = 0
+aaa = 1
 def queryholders(names,depth):
     curs = db403.cursor()
     #nodes = []
@@ -184,12 +184,12 @@ def queryholders(names,depth):
                 p = 2
                 #links3.append({"source": result, "target": name, "relation": "hold"})
                 #if result not in names:  决定节点是否可以处在不同层级
-                nodes3.append({"name": result, "type": p,"credit_no":idss,"direction":"up","depth":aaa+1})
+                nodes3.append({"name": result, "type": p,"credit_no":idss,"direction":"up","depth":aaa++})
 
                 a.append(result)
             elif len(result) >= 4:
                 p = 1
-                nodes3.append({"name": result, "type": p, "credit_no": idss, "direction": "up","depth":aaa+1})
+                nodes3.append({"name": result, "type": p, "credit_no": idss, "direction": "up","depth":aaa++})
                 #links3.append({"source": result, "target": name, "relation": "hold"})
                 a.append(result)
             # for x in a:  #同一层边连接
@@ -210,7 +210,7 @@ def queryholders(names,depth):
 
 nodes4 = []   #持股节点
 #links4 = []
-bbb = 0
+bbb = 1
 #print(queryholders(['招商银行股份有限公司'],3))  输入的是一个数组
 def queryholders2(names,depth):
     curs = db403.cursor()
@@ -249,13 +249,13 @@ def queryholders2(names,depth):
             p2 = 0
             if len(result2) < 4 and len(result2) > 1:
                 p2 = 2
-                nodes4.append({"name": result2, "type": p2, "credit_no": idss, "direction": "down","depth":bbb+1})
+                nodes4.append({"name": result2, "type": p2, "credit_no": idss, "direction": "down","depth":bbb++})
                 #links4.append({"source": name, "target": result2, "relation": "hold"})
                 #nodes.append({"name": result2, "type": p2,"credit_no":idss})
                 a.append(result2)
             elif len(result2) >= 4:
                 p2 = 1
-                nodes4.append({"name": result2, "type": p2, "credit_no": idss, "direction": "down","depth":bbb+1})
+                nodes4.append({"name": result2, "type": p2, "credit_no": idss, "direction": "down","depth":bbb++})
                 #links4.append({"source": name, "target": result2, "relation": "hold"})
                 #nodes.append({"name": result2, "type": p2,"credit_no":idss})
                 a.append(result2)
